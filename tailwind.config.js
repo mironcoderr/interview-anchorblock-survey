@@ -12,6 +12,8 @@ module.exports = {
             'green': '#10C939',
             'active': '#E4EFFF',
             'primary': '#246CD9',
+            'red-deep': '#b91c1c',
+            'red-light': '#fecaca',
             'border-step': '#E2E5EA',
             'border-check': '#D2D5DB',
             'border-divide': '#E4E8EF',

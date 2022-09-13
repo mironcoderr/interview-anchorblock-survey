@@ -1,8 +1,19 @@
 import React from "react";
 
-export default function SecondStep({ name, setName, email, setEmail, setSurveyStep }) {
-    const handleNextStep = () => { if(name && email) setSurveyStep(3); }
-    const handleBackStep = () => { setSurveyStep(1); }
+export default function SecondStep({ setError, name, setName, email, setEmail, setSurveyStep }) {
+    const handleNextStep = () => {
+        if(!name && !email) setError("Please fill in all information fields");
+        else if(!email) setError("Please fill in email information fields");
+        else if(!name) setError("Please fill in name information fields");
+        else {
+            setError("");
+            setSurveyStep(3);
+        }
+    }
+    const handleBackStep = () => {
+        setError("");
+        setSurveyStep(1);
+    }
 
     return (
         <div className="py-12 px-11">

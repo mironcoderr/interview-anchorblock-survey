@@ -1,9 +1,17 @@
 import React from "react";
 
-export default function FirstStep({ checkFeel, setCheckFeel, checkDay, setCheckDay, setSurveyStep }) {
+export default function FirstStep({ setError, checkFeel, setCheckFeel, checkDay, setCheckDay, setSurveyStep }) {
     const feelValue = Object.values(checkFeel).includes(true);
     const dayValue = Object.values(checkDay).includes(true);
-    const handleNextStep = () => { if (feelValue && dayValue) setSurveyStep(2); }
+    const handleNextStep = () => { 
+        if(!feelValue && !dayValue) setError("Please select all information fields"); 
+        else if(!feelValue) setError("Please select your difference answer");
+        else if(!dayValue) setError("Please select your day answer");
+        else {
+            setError("");
+            setSurveyStep(2);
+        }
+    }
 
     return (
         <div className="py-12 px-11">
